@@ -1,10 +1,66 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Image Processor";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+    <h1>Image Processing Playground</h1>
+    <p class="subtitle">
+        Explore pixel-level image transformations — step by step or in motion.
+    </p>
+
+    <button type="button" id="btnOpen">Open Images</button>
+</section>
+
+
+<section class="content">
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Automatic Processing</h3>
+                <p>
+                    Continuously applies transformations to visualize how images evolve over time.
+                </p>
+            </div>
+
+            <img id="imgAuto" class="preview hidden" src="~/images/luffy1.jpg" alt="Automatic Image" />
+
+            <div class="buttons">
+                <button type="button" id="btnToggle" class="btn-start" disabled>
+                    <span class="btn-text">Start</span>
+                    <span id="loading" class="loader hidden"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Step-by-Step Processing</h3>
+                <p>
+                    Apply a single transformation per action to observe pixel changes precisely.
+                </p>
+            </div>
+
+            <img id="imgStep" class="preview hidden" src="~/images/roger1.jpg" alt="Step Image" />
+
+            <div class="buttons">
+                <button type="button" id="btnStep" disabled>Step</button>
+            </div>
+        </div>
+
+    </div>
+    
+</section>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
+
+<form id="antiForgeryForm" method="post">
+    @Html.AntiForgeryToken()
+</form>
+
+
+
